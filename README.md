@@ -29,6 +29,10 @@
 ・ 通勤、通学の合間や寝る前などの一人の時間<br>
 ・ 悩んでいる人へ伝えてあげたい言葉を探している時<br>
 ・ 人に見てもらいたくなる様な素敵な写真が撮れた時<br>
+
+## 実装機能リストのURL
+https://docs.google.com/spreadsheets/d/1NIT86jI62_uZsPd1jHs1YDUoN1df76EWI44eXdxL2Co/edit?usp=drive_link
+
 ​
 ## 設計書
 後ほど作成予定
