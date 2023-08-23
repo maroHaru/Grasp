@@ -1,24 +1,41 @@
-# README
+# Smile
+​
+## サイト概要
+### サイトテーマ
+社会の厳しさに立ち向かう為の自分の軸となる様な言葉や、心が癒される写真を投稿・検索して明日への活力になる事を目的としております。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+​
+### テーマを選んだ理由
+10代の頃に耳にした偉人や著名人の名言や格言はその時は素敵だとは思っても意味をあまり理解する事無く忘れてしまっておりました。社会人となり同じ言葉を改めて耳にした際、涙が出る程に感銘を受けテーマを考えるきっかけとなりました。
 
-Things you may want to cover:
+世界に80億人以上の人がいるにも関わらず自分に必要な言葉に出会うのが難しかったり、世界中にいる人の良い言葉や素敵な一場面に出会えないのは勿体ないと思います。
 
-* Ruby version
+また良い言葉は自分ではなかなか生み出せず、素敵な一場面にも自分で出会うには限りがあるかと思います。
 
-* System dependencies
+コニュニティサイトで様々なユーザが名言や格言を発信する事が出来たら、様々な年代や環境下の方が自分に"必要な"言葉や素敵な一場面に出会う事が出来ると考えました。
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+人との繋がりがネットワーク上で出来る時代だからこそ気軽に良い言葉や素敵な一場面を共有する事が出来る場所があればと思いこのテーマに致しました。
+​
+### ターゲットユーザ
+・ ポジティブな気持ちになりたい人<br>
+・ 癒しを探している人<br>
+・ 課題に立ち向かっている人<br>
+・ 無気力な人<br>
+・ 自分の軸となる様な言葉を探している人<br>
+・ 自分が大切にしている言葉を伝えたい人<br>
+・ 人に共有したい癒される写真を持っている人<br>
+​
+### 主な利用シーン
+・ 通勤、通学の合間や寝る前などの一人の時間<br>
+・ 悩んでいる人へ伝えてあげたい言葉を探している時<br>
+・ 人に見てもらいたくなる様な素敵な写真が撮れた時<br>
+​
+## 設計書
+後ほど作成予定
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
