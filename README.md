@@ -2,7 +2,7 @@
 ​
 ## サイト概要
 ### サイトテーマ
-手間なく業務内容・業務量の可視化をして自分自身でもマネジメント側からも業務の効率化を図ることが出来る、企業内で業務管理をする事を目的とした日報管理システム
+手間なく業務内容・業務量の可視化をして自分自身でもマネジメント側からも業務の効率化を図ることが出来る。企業内で業務管理をする事を目的とした日報管理システム
 
 ​
 ### テーマを選んだ理由
@@ -29,8 +29,9 @@
 
 ​
 ## 設計書
-後ほど作成予定
-実装機能リストのURL https://docs.google.com/spreadsheets/d/1NIT86jI62_uZsPd1jHs1YDUoN1df76EWI44eXdxL2Co/edit?usp=drive_link
+後ほど作成予定<br>
+実装機能リストのURL<br>
+https://docs.google.com/spreadsheets/d/1NIT86jI62_uZsPd1jHs1YDUoN1df76EWI44eXdxL2Co/edit?usp=drive_link
 
 
 ## 開発環境
