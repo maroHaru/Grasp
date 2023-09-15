@@ -11,6 +11,24 @@
   </head>
 
   <body>
+    <header>
+      <% if worker_signed_in? %>
+        <li>
+          <%= link_to "従業員ログアウト", destroy_worker_session_path, method: :delete %>
+        </li>
+      <% elsif admin_signed_in? %>
+        <li>
+          <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "従業員ログイン", new_worker_session_path %>
+        </li>
+        <li>
+          <%= link_to "管理者ログイン", new_admin_session_path %>
+        </li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
