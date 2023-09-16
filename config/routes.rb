@@ -7,6 +7,14 @@ Rails.application.routes.draw do
     sessions: 'worker/sessions'
   }
 
+  devise_scope :worker do
+    post 'workers/guest_sign_in', to: 'worker/sessions#guest_sign_in'
+  end
+
+  devise_scope :worker do
+    delete 'workers/guest_sign_out', to: 'worker/sessions#guest_sign_out'
+  end
+
   root to: "worker/homes#top"
   get '/about', to: 'worker/homes#about', as: 'about'
 

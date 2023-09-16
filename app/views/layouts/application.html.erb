@@ -16,6 +16,9 @@
         <li>
           <%= link_to "従業員ログアウト", destroy_worker_session_path, method: :delete %>
         </li>
+        <li>
+          <%= link_to "ゲストログアウト", workers_guest_sign_out_path, method: :delete %>
+        </li>
       <% elsif admin_signed_in? %>
         <li>
           <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
@@ -23,6 +26,9 @@
       <% else %>
         <li>
           <%= link_to "従業員ログイン", new_worker_session_path %>
+        </li>
+        <li>
+          <%= link_to "ゲストログイン", workers_guest_sign_in_path, method: :post %>
         </li>
         <li>
           <%= link_to "管理者ログイン", new_admin_session_path %>

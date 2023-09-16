@@ -14,7 +14,17 @@ class Worker::SessionsController < Devise::SessionsController
   # def new
   #   super
   # end
+  def guest_sign_in
+    worker = Worker.guest
+    sign_in worker
+    redirect_to root_path
+  end
 
+  def guest_sign_out
+    worker = Worker.guest
+    sign_out worker
+    redirect_to root_path
+  end
   # POST /resource/sign_in
   # def create
   #   super
