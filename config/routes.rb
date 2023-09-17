@@ -19,5 +19,9 @@ Rails.application.routes.draw do
   get '/about', to: 'worker/homes#about', as: 'about'
 
   get '/admin', to: 'admin/homes#top'
+
+  namespace :admin do
+    resources :clients, only: [:index, :create, :edit, :update]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
