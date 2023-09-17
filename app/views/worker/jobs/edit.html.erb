@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-5">
+      <h5 class="mb-4">業務内容編集</h5>
+      <%= form_with model: @job, url: job_path, method: :patch do |f| %>
+        <h6>業務内容</h6>
+        <div class="field">
+          <label for="inputjob" class="form-label"></label>
+          <%= f.text_field :description, autofocus: true, id:"inputjob", placeholder:"業務内容", class: "form-control" %>
+        </div>
+
+        <div class="col-sm-4 text-center mt-4">
+          <%= f.submit "変更を保存", class: "btn btn-md btn-success" %>
+        </div>
+      <% end %>
+    </div>
+    </div class="col-md-2"></div>
+  </div>
+</div>
