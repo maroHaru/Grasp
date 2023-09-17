@@ -23,5 +23,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :clients, only: [:index, :create, :edit, :update]
   end
+
+  scope module: :worker do
+    resources :jobs, except: [:new, :show]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
