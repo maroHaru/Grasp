@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :jobs, except: [:new, :show]
   end
   
+  patch '/to_dos/complete', to: 'worker/to_dos#complete'
   scope module: :worker do
     resources :to_dos, only: [:index, :create, :update, :destroy]
   end

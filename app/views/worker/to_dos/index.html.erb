@@ -1,0 +1,16 @@
+<h1>ToDo</h1>
+<%= form_with model: @to_do do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit '追加' %>
+<% end %>
+
+<h1>ToDoリスト</h1>
+<% @to_dos.each do |to_do| %>
+  <%= to_do.name %>
+  <%= link_to "完了", to_dos_complete_path, method: :patch %>
+<% end %>
+
+<h1>完了リスト</h1>
+<% @complete_to_dos.each do |to_do| %>
+  <%= to_do.name %>
+<% end %>
