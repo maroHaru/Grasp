@@ -5,6 +5,7 @@ class Worker < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :jobs, dependent: :destroy
+  has_many :to_dos, dependent: :destroy
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com',

@@ -27,5 +27,9 @@ Rails.application.routes.draw do
   scope module: :worker do
     resources :jobs, except: [:new, :show]
   end
+  
+  scope module: :worker do
+    resources :to_dos, only: [:index, :create, :update, :destroy]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
