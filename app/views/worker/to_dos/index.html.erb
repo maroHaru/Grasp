@@ -7,10 +7,15 @@
 <h1>ToDoリスト</h1>
 <% @to_dos.each do |to_do| %>
   <%= to_do.name %>
-  <%= link_to "完了", to_dos_complete_path, method: :patch %>
+  <%= form_with model: @to_do, url: to_dos_complete_path, method: :patch do |f| %>
+    <%= f.hidden_field :is_completed, :value => true %>
+    <%= f.hidden_field :to_do_id, :value => to_do.id %>
+    <%= f.submit '完了' %>
+  <% end %>
 <% end %>
 
 <h1>完了リスト</h1>
 <% @complete_to_dos.each do |to_do| %>
+  <%= to_do.completed_date %>
   <%= to_do.name %>
 <% end %>
