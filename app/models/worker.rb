@@ -6,6 +6,7 @@ class Worker < ApplicationRecord
 
   has_many :jobs, dependent: :destroy
   has_many :to_dos, dependent: :destroy
+  has_many :timecards, dependent: :destroy
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com',

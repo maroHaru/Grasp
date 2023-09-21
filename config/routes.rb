@@ -27,10 +27,14 @@ Rails.application.routes.draw do
   scope module: :worker do
     resources :jobs, except: [:new, :show]
   end
-  
+
   patch '/to_dos/complete', to: 'worker/to_dos#complete'
   scope module: :worker do
     resources :to_dos, only: [:index, :create, :update, :destroy]
+  end
+
+  scope module: :worker do
+    resources :timecards, except: [:show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

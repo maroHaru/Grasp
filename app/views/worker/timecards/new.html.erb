@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h5 class="mb-3 bg-light">業務開始</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <%= form_with model: @timecard, url: timecards_path, method: :post do |f| %>
+        <%= f.label :client, "Clientを選択" %></br>
+        <%= f.select :timecard_id, options_from_collection_for_select(Client.all, :id, :name) %></br>
+        <%= f.label :job, "業務内容を選択" %></br>
+        <%= f.select :timecard_id, options_from_collection_for_select(Job.all, :id, :description) %></br>
+        <%= f.label :to_do, "To Doリストから選択" %></br>
+        <%= f.select :to_do_id, options_from_collection_for_select(ToDo.all, :id, :name) %></br>
+        <%= f.label :memo, "メモ" %></br>
+        <%= f.text_area :memo %></br>
+        <%= f.submit '開始', class: "btn btn-md btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
