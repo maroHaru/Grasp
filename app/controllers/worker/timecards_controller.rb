@@ -5,15 +5,15 @@ class Worker::TimecardsController < ApplicationController
   end
 
   def create
-    now = Time.current
+    # now = Time.current
     timecard = Timecard.new(timecard_params)
     timecard.worker_id = current_worker.id
-    timecard.save(start_time: now)
+    timecard.save
     redirect_to timecards_path
   end
 
   def index
-    @timecards = Timecard.all
+    @timecards = current_worker.timecards
   end
 
   def timecard_params
