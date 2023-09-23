@@ -1,5 +1,65 @@
-<h1>timecardリスト</h1>
-
-<% @timecards.each do |timecard| %>
-  <%= timecard.memo %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 text-left">
+　　  <h1>timecardリスト</h1>
+　　</div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="table-secondary w-20">開始時間</th>
+            <th class="table-secondary w-20">終了時間</th>
+            <th class="table-secondary w-25">Client名</th>
+            <th class="table-secondary w-25">業務内容</th>
+            <th class="table-secondary w-50">To Do</th>
+            <th class="table-secondary w-25">メモ</th>
+            <th class="table-secondary w-25">対応時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @timecards.each do |timecard| %>
+            <tr>
+              <td><%= timecard.start_time %></td>
+              <td>
+                <% if timecard.end_time.present? %>
+                  <%= timecard.end_time %>
+                <% else %>
+                  <%= form_with model: @timecard, url: timecards_finish_path, method: :patch do |f| %>
+                    <%= f.time_field :end_time %>
+                    <%= f.hidden_field :timecard_id, :value => timecard.id %>
+                    <%= f.submit '終了' %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                <% if timecard.client.present? %>
+                  <%= timecard.client.name %>
+                <% else %>
+                  未設定
+                <% end %>
+              </td>
+              <td>
+                <% if timecard.job.present? %>
+                  <%= timecard.job.description %>
+                <% else %>
+                  未設定
+                <% end %>
+              </td>
+              <td>
+                <% if timecard.to_do.present? %>
+                  <%= timecard.to_do.name %>
+                <% else %>
+                  未設定
+                <% end %>
+              </td>
+              <td><%= timecard.memo %></td>
+              <td></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
