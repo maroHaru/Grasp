@@ -8,9 +8,9 @@
     <div class="col-md-9">
       <%= form_with model: @timecard, url: timecards_path, method: :post do |f| %>
         <%= f.label :client, "Clientを選択" %></br>
-        <%= f.select :timecard_id, options_from_collection_for_select(Client.all, :id, :name), {include_blank: '---未選択---'} %></br>
+        <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :name), {include_blank: '---未選択---'} %></br>
         <%= f.label :job, "業務内容を選択" %></br>
-        <%= f.select :timecard_id, options_from_collection_for_select(Job.all, :id, :description), {include_blank: '---未選択---'} %></br>
+        <%= f.select :job_id, options_from_collection_for_select(Job.all, :id, :description), {include_blank: '---未選択---'} %></br>
         <%= f.label :to_do, "To Doリストから選択" %></br>
         <%= f.select :to_do_id, options_from_collection_for_select(ToDo.all, :id, :name), {include_blank: '---未選択---'} %></br>
         <%= f.label :memo, "メモ" %></br>
