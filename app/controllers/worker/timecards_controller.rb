@@ -41,9 +41,7 @@ class Worker::TimecardsController < ApplicationController
   def finish
     now = Time.current
     timecard = Timecard.find(params[:timecard_id])
-    # timecard.worker_id = current_worker.id
     timecard.end_time = now
-    # timecard = Timecard.find(params[:id][:end_time])
     timecard.update(end_time: now)
     redirect_to timecards_path
   end
