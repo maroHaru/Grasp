@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 text-left">
+　　  <h1>日報リスト</h1>
+　　</div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="table-secondary w-20">日付</th>
+            <th class="table-secondary w-20">総時間</th>
+            <th class="table-secondary w-25">コメント</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @daily_reports.each do |daily_report| %>
+            <tr>
+              <td><%= daily_report.reported_date %></td>
+              <td></td>
+              <td></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

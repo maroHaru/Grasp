@@ -5,11 +5,6 @@ class Worker::TimecardsController < ApplicationController
   end
 
   def create
-    # now = Time.current
-    # deily_report = DailyReport.new
-    # deily_report.worker_id = current_worker.id
-    # deily_report.id = 1
-    # deily_report.save
     now = Time.current
     timecard = Timecard.new(timecard_params)
     timecard.worker_id = current_worker.id
