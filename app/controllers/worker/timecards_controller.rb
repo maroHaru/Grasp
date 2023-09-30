@@ -20,8 +20,12 @@ class Worker::TimecardsController < ApplicationController
     pp "current-----------------------------#{current_worker.id}"
     #pp "@timecards---------------------------#{@timecards.inspect}"
     @timecards = Timecard.all
+
     total = []
     @timecards.each do |card|
+      if card.end_time == nil || card.start_time == nil
+        next
+      end
       diff = card.end_time - card.start_time
       total << diff
     end
