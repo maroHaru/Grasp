@@ -8,4 +8,5 @@ class Timecard < ApplicationRecord
   def amount_of_time
     Time.at(end_time - start_time).utc.strftime('%R')
   end
+
 end

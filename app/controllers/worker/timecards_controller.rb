@@ -20,6 +20,13 @@ class Worker::TimecardsController < ApplicationController
     pp "current-----------------------------#{current_worker.id}"
     #pp "@timecards---------------------------#{@timecards.inspect}"
     @timecards = Timecard.all
+    total = []
+    @timecards.each do |card|
+      diff = card.end_time - card.start_time
+      total << diff
+    end
+    @total = Time.at(total.sum).utc.strftime('%R')
+    # @total = Time.at(0).utc.strftime('%R')
     # @timecards = @client.timecards
   end
 

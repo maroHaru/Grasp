@@ -17,6 +17,7 @@
             <th class="table-secondary w-50">業務内容 / To Do</th>
             <th class="table-secondary w-25">メモ</th>
             <th class="table-secondary w-25">対応時間</th>
+            <th class="table-secondary w-25">対応時間2</th>
           </tr>
         </thead>
         <tbody>
@@ -40,7 +41,7 @@
                 <% if timecard.client.present? %>
                   <%= timecard.client.name %>
                 <% else %>
-                  未設定
+                  ---
                 <% end %>
               </td>
               <td>
@@ -49,7 +50,7 @@
                 <% elsif timecard.to_do.present? %>
                   <%= timecard.to_do.name %>
                 <% else %>
-                  未設定
+                  ---
                 <% end %>
               </td>
               <td>
@@ -64,10 +65,17 @@
                 <%= timecard.amount_of_time %>
                 <% end %>
               </td>
+              <td><%= timecard.end_time - timecard.start_time %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
+  </div>
+    <div class="row">
+    <div class="col-md-5 text-left">
+　　  <h6>総時間</h6>
+　　  <%= @total %>
+　　</div>
   </div>
 </div>
