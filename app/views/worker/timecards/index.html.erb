@@ -24,7 +24,7 @@
             <tr>
               <td><%= link_to "編集", edit_timecard_path(timecard.id), class: "btn btn-md btn-success" %></td>
               <td><%= link_to "削除", timecard_path(timecard.id), method: :delete, "data-confirm" => "本当に削除されますか？", class: "btn btn-sm btn-danger" %></td>
-              <td><%= timecard.start_time %></td>
+              <td><%= l timecard.start_time, format: :short %></td>
               <td>
                 <% if timecard.end_time.present? %>
                   <%= l timecard.end_time, format: :short %>
@@ -52,8 +52,18 @@
                   未設定
                 <% end %>
               </td>
-              <td><%= timecard.memo %></td>
-              <td></td>
+              <td>
+                <% if timecard.memo.present? %>
+                  <%= timecard.memo %>
+                <% else %>
+                  ---
+                <% end %>
+              </td>
+              <td>
+                <% if timecard.start_time.present? && timecard.end_time.present? %>
+                <%= timecard.amount_of_time %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
