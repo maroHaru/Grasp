@@ -9,11 +9,12 @@
       <table class="table table-bordered">
         <thead>
           <tr>
+            <th class="table-secondary w-20"></th>
+            <th class="table-secondary w-20"></th>
             <th class="table-secondary w-20">開始時間</th>
             <th class="table-secondary w-20">終了時間</th>
             <th class="table-secondary w-25">Client名</th>
-            <th class="table-secondary w-25">業務内容</th>
-            <th class="table-secondary w-50">To Do</th>
+            <th class="table-secondary w-50">業務内容 / To Do</th>
             <th class="table-secondary w-25">メモ</th>
             <th class="table-secondary w-25">対応時間</th>
           </tr>
@@ -21,6 +22,8 @@
         <tbody>
           <% @timecards.each do |timecard| %>
             <tr>
+              <td><%= link_to "編集", edit_timecard_path(timecard.id), class: "btn btn-md btn-success" %></td>
+              <td><%= link_to "削除", timecard_path(timecard.id), method: :delete, "data-confirm" => "本当に削除されますか？", class: "btn btn-sm btn-danger" %></td>
               <td><%= timecard.start_time %></td>
               <td>
                 <% if timecard.end_time.present? %>
@@ -43,12 +46,7 @@
               <td>
                 <% if timecard.job.present? %>
                   <%= timecard.job.description %>
-                <% else %>
-                  未設定
-                <% end %>
-              </td>
-              <td>
-                <% if timecard.to_do.present? %>
+                <% elsif timecard.to_do.present? %>
                   <%= timecard.to_do.name %>
                 <% else %>
                   未設定
@@ -60,14 +58,6 @@
           <% end %>
         </tbody>
       </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-5 text-left">
-        <%= form_with model: daily_report, url: daily_reports_path, method: :post do |f| %>
-        <%= f.hidden_field :is_reported, :value => is_reported %>
-        <%= f.submit '日報報告' %>
-      <% end %>
     </div>
   </div>
 </div>

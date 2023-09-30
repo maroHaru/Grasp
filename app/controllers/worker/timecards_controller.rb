@@ -41,6 +41,12 @@ class Worker::TimecardsController < ApplicationController
     redirect_to timecards_path
   end
 
+  def destroy
+    timecard = Timecard.find(params[:id])
+    timecard.destroy
+    redirect_to timecards_path
+  end
+
 
   def timecard_params
     params.require(:timecard).permit(:daily_report_id, :worker_id, :client_id, :job_id, :to_do_id, :memo, :start_time, :end_time)

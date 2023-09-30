@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-5">
+      <h5 class="mb-4">業務リスト編集</h5>
+      <%= form_with model: @timecard, url: timecard_path(@timecard), method: :patch do |f| %>
+        <h6>開始時間</h6>
+        <div class="field">
+          <label for="inputstarttime" class="form-label"></label>
+          <%= f.time_field :start_time, autofocus: true, id:"inputstarttime", placeholder:"開始時間を編集" %>
+        </div>
+        <h6>終了時間</h6>
+        <div class="field">
+          <label for="inputendtime" class="form-label"></label>
+          <%= f.time_field :end_time, autofocus: true, id:"inputendtime", placeholder:"終了時間を編集" %>
+        </div>
+        <h6>Client</h6>
+        <div class="field">
+          <label for="inputclient" class="form-label"></label>
+          <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :name), {include_blank: '---未選択---'}, autofocus: true, id:"inputclient", placeholder:"Clientを選択" %>
+        </div>
+        <h6>業務内容</h6>
+        <div class="field">
+          <label for="inputjob" class="form-label"></label>
+          <%= f.select :job_id, options_from_collection_for_select(Job.all, :id, :description), {include_blank: '---未選択---'}, autofocus: true, id:"inputjob", placeholder:"業務内容を選択" %>
+        </div>
+        <h6>To Do</h6>
+        <div class="field">
+          <label for="inputtodo" class="form-label"></label>
+          <%= f.select :to_do_id, options_from_collection_for_select(ToDo.all, :id, :name), {include_blank: '---未選択---'}, autofocus: true, id:"inputtodo", placeholder:"To Doリストから選択" %>
+        </div>
+        <h6>メモ</h6>
+        <div class="field">
+          <label for="inputmemo" class="form-label"></label>
+          <%= f.text_area :memo, autofocus: true, id:"inputmemo", placeholder:"メモを編集" %>
+        </div>
+
+        <div class="col-sm-4 text-center mt-4">
+          <%= f.submit "変更を保存", class: "btn btn-md btn-success" %>
+        </div>
+      <% end %>
+    </div>
+    </div class="col-md-2"></div>
+  </div>
+</div>
