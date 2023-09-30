@@ -7,20 +7,33 @@ class Worker::TimecardsController < ApplicationController
   def create
     now = Time.current
     timecard = Timecard.new(timecard_params)
-    timecard.worker_id = current_worker.id
-    timecard.start_time = now
-    timecard.daily_report_id = 1
-    timecard.save!
-    redirect_to timecards_path
+    today = Date.today
+    if DailyReport.find_by(reported_date: params[:daily_report][:today])
+      timecard.worker_id = current_worker.id
+      timecard.start_time = now
+      # timecard.daily_report_id = 1
+      timecard.save!
+      redirect_to timecards_path
+    else @daily_report = DailyReport.new
+      daily_report.worker_id = current_worker.id
+      daily_report.is_reported = false
+      daily_report.reported_date = today
+      daily_report.save!
+      timecard.start_time = now
+      timecard.save!
+      redirect_to timecards_path
+    end
   end
 
   def index
-    #@timecard = Timecard.find_by(memo: params[:timecard][:memo])
-    #@timecards = current_worker.timecards
     pp "current-----------------------------#{current_worker.id}"
-    #pp "@timecards---------------------------#{@timecards.inspect}"
+    @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
+    @daily_report = @timecards.daily_report
     @timecards = Timecard.all
-
+    # @timecard_all = DailyReport.find(params[:daily_report][:daily_report_id])
+    # @daily_report = DailyReport.find(params[:id])
+    # @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
+    # @daily_report = DailyReport.find(params[:daily_report])
     total = []
     @timecards.each do |card|
       if card.end_time == nil || card.start_time == nil
@@ -30,8 +43,6 @@ class Worker::TimecardsController < ApplicationController
       total << diff
     end
     @total = Time.at(total.sum).utc.strftime('%R')
-    # @total = Time.at(0).utc.strftime('%R')
-    # @timecards = @client.timecards
   end
 
   def edit
