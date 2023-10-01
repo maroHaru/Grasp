@@ -5,21 +5,27 @@ class Worker::TimecardsController < ApplicationController
   end
 
   def create
-    now = Time.current
+    # now = Time.current
     timecard = Timecard.new(timecard_params)
     today = Date.today
-    if DailyReport.find_by(reported_date: params[:daily_report][:today])
+    if params[:daily_report] != nil && params[:daily_report][:today]
+      reported_date = params[:daily_report][:today]
+    end
+    if reported_date != nil
+      @daily_report = DailyReport.find_by(reported_date:reported_date)
       timecard.worker_id = current_worker.id
-      timecard.start_time = now
-      # timecard.daily_report_id = 1
+      timecard.start_time = Time.current
+      timecard.daily_report_id = @daily_report.id
       timecard.save!
       redirect_to timecards_path
     else @daily_report = DailyReport.new
-      daily_report.worker_id = current_worker.id
-      daily_report.is_reported = false
-      daily_report.reported_date = today
-      daily_report.save!
-      timecard.start_time = now
+      @daily_report.worker_id = current_worker.id
+      @daily_report.is_reported = false
+      @daily_report.reported_date = today
+      @daily_report.save!
+      timecard.daily_report_id = @daily_report.id
+      timecard.worker_id = current_worker.id
+      timecard.start_time = Time.current
       timecard.save!
       redirect_to timecards_path
     end
@@ -27,15 +33,16 @@ class Worker::TimecardsController < ApplicationController
 
   def index
     pp "current-----------------------------#{current_worker.id}"
-    @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
-    @daily_report = @timecards.daily_report
-    @timecards = Timecard.all
+    # @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
+    # @daily_report = @timecards.daily_report
+    @timecards = Timecard.where(start_time: Time.current.beginning_of_day...Time.current.end_of_day)
     # @timecard_all = DailyReport.find(params[:daily_report][:daily_report_id])
     # @daily_report = DailyReport.find(params[:id])
     # @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
     # @daily_report = DailyReport.find(params[:daily_report])
     total = []
     @timecards.each do |card|
+    @daily_report = card.daily_report
       if card.end_time == nil || card.start_time == nil
         next
       end

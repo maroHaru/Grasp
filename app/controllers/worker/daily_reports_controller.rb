@@ -9,6 +9,7 @@ class Worker::DailyReportsController < ApplicationController
   end
 
   def index
+    @daily_reports = DailyReport.all
   end
 
   def show
@@ -16,7 +17,7 @@ class Worker::DailyReportsController < ApplicationController
   end
 
   def report
-    @daily_report = DailyReport.find(params[:is_reported])
+    @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
     @daily_report.update(is_reported: true)
     redirect_to timecards_path
     @timecards = @daily_report.timecards
