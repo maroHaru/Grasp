@@ -18,7 +18,18 @@
           <% @daily_reports.each do |daily_report| %>
             <tr>
               <td><%= daily_report.reported_date %></td>
-              <td></td>
+              <td>
+                <% if daily_report.is_reported? %>
+                  <% total = [] %>
+                  <% daily_report.timecards.each do |timecard| %>
+                    <% diff = timecard.end_time - timecard.start_time %>
+                    <% total << diff %>
+                  <% end %>
+                  <%= total = Time.at(total.sum).utc.strftime('%R') %>
+                <% else %>
+                  未報告
+                <% end %>
+              </td>
               <td></td>
             </tr>
           <% end %>
