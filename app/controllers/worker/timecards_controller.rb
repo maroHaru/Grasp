@@ -37,7 +37,7 @@ class Worker::TimecardsController < ApplicationController
     pp "current-----------------------------#{current_worker.id}"
     # @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
     # @daily_report = @timecards.daily_report
-    @timecards = Timecard.where(start_time: Time.current.beginning_of_day...Time.current.end_of_day)
+    @timecards = current_worker.timecards.where(start_time: Time.current.beginning_of_day...Time.current.end_of_day)
     # @timecard_all = DailyReport.find(params[:daily_report][:daily_report_id])
     # @daily_report = DailyReport.find(params[:id])
     # @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])

@@ -9,7 +9,7 @@ class Worker::DailyReportsController < ApplicationController
   end
 
   def index
-    @daily_reports = DailyReport.all
+    @daily_reports = current_worker.daily_reports
   end
 
   def show
