@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <h5 class="mb-3">従業員一覧</h5>
+    </div>
+  </div>
+  <div class="row">
+     <div class="col-md-8 offset-md-1">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @workers.each do |worker| %>
+            <tr>
+              <td><%= worker.id %></td>
+              <td><%= link_to worker.name, admin_daily_reports_path %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

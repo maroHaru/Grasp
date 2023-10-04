@@ -42,5 +42,18 @@ Rails.application.routes.draw do
   scope module: :worker do
     resources :daily_reports, only: [:index, :create, :show]
   end
+
+  namespace :admin do
+    resources :workers, only: [:index]
+  end
+
+  namespace :admin do
+    resources :daily_reports, only: [:index, :show]
+  end
+
+  namespace :admin do
+    resources :timecards, only: [:index]
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
