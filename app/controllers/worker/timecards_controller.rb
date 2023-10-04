@@ -8,17 +8,19 @@ class Worker::TimecardsController < ApplicationController
     # now = Time.current
     timecard = Timecard.new(timecard_params)
     today = Date.today
-    if params[:daily_report] != nil && params[:daily_report][:today]
-      reported_date = params[:daily_report][:today]
-    end
-    if reported_date != nil
-      @daily_report = DailyReport.find_by(reported_date:reported_date)
+
+    @daily_report = current_worker.daily_reports.find_by(reported_date: today)
+    # if params[:daily_report] != nil && params[:daily_report][:today]
+    #   reported_date = params[:daily_report][:today]
+    # end
+    if @daily_report.present?
       timecard.worker_id = current_worker.id
       timecard.start_time = Time.current
       timecard.daily_report_id = @daily_report.id
       timecard.save!
       redirect_to timecards_path
-    else @daily_report = DailyReport.new
+    else
+      @daily_report = DailyReport.new
       @daily_report.worker_id = current_worker.id
       @daily_report.is_reported = false
       @daily_report.reported_date = today

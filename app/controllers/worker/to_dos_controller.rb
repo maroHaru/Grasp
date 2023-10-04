@@ -39,7 +39,6 @@ class Worker::ToDosController < ApplicationController
   end
 
 
-
   private
 
   def to_do_params
