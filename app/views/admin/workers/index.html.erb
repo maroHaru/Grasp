@@ -17,7 +17,7 @@
           <% @workers.each do |worker| %>
             <tr>
               <td><%= worker.id %></td>
-              <td><%= link_to worker.name, admin_daily_reports_path %></td>
+              <td><%= link_to worker.name, admin_worker_path(worker.id) %></td>
             </tr>
           <% end %>
         </tbody>

@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :workers, only: [:index]
+    resources :workers, only: [:index, :show]
   end
 
   namespace :admin do
