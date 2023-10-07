@@ -5,7 +5,7 @@ class Admin::CommentsController < ApplicationController
     comment = current_admin.comments.new(comment_params)
     comment.daily_report_id = daily_report.id
     comment.save
-    redirect_to admin_worker_path(worker.id)
+    redirect_to admin_worker_path(daily_report.worker.id)
   end
 
   private
