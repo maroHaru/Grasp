@@ -48,7 +48,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :daily_reports, only: [:index, :show]
+    resources :daily_reports, only: [:index, :show] do
+      resources :comments, only: [:create, :destroy]
+    end
   end
 
   namespace :admin do

@@ -62,8 +62,14 @@
       </table>
     </div>
   </div>
-    <div class="row">
-    <div class="col-md-12 text-right">
+  <div class="row">
+    <div class="col-md-7 text-right">
+　　  <%= form_with model: [@daily_report, @comment], url: admin_daily_report_comments_path(@daily_report.id), method: :post do |f| %>
+　　    <%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>
+　　    <%= f.submit "コメント送信" %>
+　　  <% end %>
+　　</div>
+    <div class="col-md-4 text-right">
 　　  <h6>総時間</h6>
 　　  <%= @total %>
 　　</div>

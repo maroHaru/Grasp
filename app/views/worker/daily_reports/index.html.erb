@@ -30,7 +30,11 @@
                   未報告
                 <% end %>
               </td>
-              <td></td>
+              <td>
+                <% daily_report.comments.each do |comment| %>
+                  <%= comment.comment %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
