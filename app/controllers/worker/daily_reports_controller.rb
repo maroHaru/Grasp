@@ -14,6 +14,7 @@ class Worker::DailyReportsController < ApplicationController
 
   def show
     @daily_report = DailyReport.find(params[:id])
+    @timecards = current_worker.timecards
   end
 
   def report

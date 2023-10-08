@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5 text-left">
-　　  <h2><%= @daily_report.reported_date %> <%= @daily_report.worker.name %>さんのtimecardリスト</h2>
+　　  <h2><%= @daily_report.reported_date %>のtimecardリスト</h2>
 　　</div>
   </div>
   <div class="row">
@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @timecards.each do |timecard| %>
+          <% @daily_report.timecards.each do |timecard| %>
             <tr>
               <td><%= l timecard.start_time, format: :short %></td>
               <td>
@@ -63,13 +63,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-7 text-right">
-　　  <%= form_with model: [@daily_report, @comment], url: admin_daily_report_comments_path(@daily_report.id), method: :post do |f| %>
-　　    <%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>
-　　    <%= f.submit "コメント送信" %>
-　　  <% end %>
-　　</div>
-    <div class="col-md-4 text-right">
+    <div class="col-md-12 text-right">
 　　  <h6>総時間</h6>
 　　  <%= @total %>
 　　</div>

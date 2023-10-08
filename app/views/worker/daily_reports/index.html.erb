@@ -25,7 +25,7 @@
                     <% diff = timecard.end_time - timecard.start_time %>
                     <% total << diff %>
                   <% end %>
-                  <%= total = Time.at(total.sum).utc.strftime('%R') %>
+                  <%= link_to total = Time.at(total.sum).utc.strftime('%R'), daily_report_path(daily_report.id) %>
                 <% else %>
                   未報告
                 <% end %>
