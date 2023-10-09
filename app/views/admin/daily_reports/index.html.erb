@@ -1,0 +1,7 @@
+<%= month_calendar events: @daily_report.timecard do | date, timecard | %>
+ <%= date.day %>
+
+ <% timecard.each do | timecard | %>
+   <%= link_to timecard.client.name, timecard %>
+ <% end %>
+<% end %>
