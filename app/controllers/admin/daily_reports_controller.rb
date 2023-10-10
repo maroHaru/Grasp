@@ -1,7 +1,8 @@
 class Admin::DailyReportsController < ApplicationController
 
   def index
-    @daily_report = DailyReport.all
+    # @daily_report = DailyReport.all
+    @timecards = @daily_report.timecards
     # indexではなくてshowが必要かもしれないBookers2を参考にして確認
   end
 

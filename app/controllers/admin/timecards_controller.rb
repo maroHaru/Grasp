@@ -6,5 +6,9 @@ class Admin::TimecardsController < ApplicationController
     # @timecards = @worker.timecards
   end
 
+  def show
+    @timecard = Timecard.find(params[:id])
+  end
+
 
 end
