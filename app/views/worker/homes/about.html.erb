@@ -1,1 +1,93 @@
-<h1>従業員Aboutページ</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 text-left">
+　　  <h4>従業員Aboutページ</h4>
+　　</div>
+　　<div class="col-md-7 text-center">
+　　　<h1>ToDo</h1>
+      <%= form_with model: @to_do do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit '追加' %>
+      <% end %>
+　　</div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-lg-5">
+      <h2>ToDoリスト</h2>
+      <% @to_dos.each do |to_do| %>
+      <table>
+        <tr>
+          <th><%= to_do.name %></th>
+          <td>
+            <%= form_with model: @to_do, url: to_dos_complete_path, method: :patch do |f| %>
+              <%= f.hidden_field :is_completed, :value => true %>
+              <%= f.hidden_field :to_do_id, :value => to_do.id %>
+              <%= f.submit '完了' %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+    <div class="col-lg-6">
+　　　<table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="table-secondary w-20">開始時間</th>
+            <th class="table-secondary w-20">終了時間</th>
+            <th class="table-secondary w-25">Client名</th>
+            <th class="table-secondary w-50">業務内容 / To Do</th>
+            <th class="table-secondary w-25">メモ</th>
+            <th class="table-secondary w-25">対応時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @timecards.each do |timecard| %>
+            <tr>
+              <td><%= l timecard.start_time, format: :short %></td>
+              <td>
+                <% if timecard.end_time.present? %>
+                  <%= l timecard.end_time, format: :short %>
+                <% else %>
+                  <%= form_with model: @timecard, url: timecards_finish_path, method: :patch do |f| %>
+                    <%= f.time_field :end_time %>
+                    <%= f.hidden_field :timecard_id, :value => timecard.id %>
+                    <%= f.submit '終了' %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                <% if timecard.client.present? %>
+                  <%= timecard.client.name %>
+                <% else %>
+                  ---
+                <% end %>
+              </td>
+              <td>
+                <% if timecard.job.present? %>
+                  <%= timecard.job.description %>
+                <% elsif timecard.to_do.present? %>
+                  <%= timecard.to_do.name %>
+                <% else %>
+                  ---
+                <% end %>
+              </td>
+              <td>
+                <% if timecard.memo.present? %>
+                  <%= timecard.memo %>
+                <% else %>
+                  ---
+                <% end %>
+              </td>
+              <td>
+                <% if timecard.start_time.present? && timecard.end_time.present? %>
+                <%= timecard.amount_of_time %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
