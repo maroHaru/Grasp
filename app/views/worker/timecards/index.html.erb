@@ -3,6 +3,13 @@
     <div class="col-md-5 text-left">
 　　  <h2><%= Date.current %> timecardリスト</h2>
 　　</div>
+　　<div class="col-md-5 text-left">
+　　  <h3>ToDo</h3>
+      <%= form_with model: @to_do do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit '追加' %>
+      <% end %>
+　　</div>
   </div>
     <div class="row">
     <div class="col-md-7 text-right">
@@ -16,7 +23,24 @@
 　　</div>
   </div>
   <div class="row">
-    <div class="col-md-12 text-center">
+    <div class="col-lg-2">
+      <h3>ToDoリスト</h3>
+      <% @to_dos.each do |to_do| %>
+      <table>
+        <tr>
+          <th><%= to_do.name %></th>
+          <td>
+            <%= form_with model: @to_do, url: to_dos_complete_path, method: :patch do |f| %>
+              <%= f.hidden_field :is_completed, :value => true %>
+              <%= f.hidden_field :to_do_id, :value => to_do.id %>
+              <%= f.submit '完了' %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+    <div class="col-lg-10 text-center">
       <table class="table table-bordered">
         <thead>
           <tr>

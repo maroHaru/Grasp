@@ -35,6 +35,8 @@ class Worker::TimecardsController < ApplicationController
 
   def index
     pp "current-----------------------------#{current_worker.id}"
+    @to_do = ToDo.new
+    @to_dos = current_worker.to_dos.where(is_completed: false)
     # @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
     # @daily_report = @timecards.daily_report
     @timecards = current_worker.timecards.where(start_time: Time.current.beginning_of_day...Time.current.end_of_day)
