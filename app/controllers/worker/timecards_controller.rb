@@ -42,6 +42,10 @@ class Worker::TimecardsController < ApplicationController
     # @daily_report = DailyReport.find(params[:id])
     # @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
     # @daily_report = DailyReport.find(params[:daily_report])
+    today = Date.today
+    @daily_report = current_worker.daily_reports.find_by(reported_date: today)
+
+
     total = []
     @timecards.each do |card|
     @daily_report = card.daily_report
@@ -51,7 +55,8 @@ class Worker::TimecardsController < ApplicationController
       diff = card.end_time - card.start_time
       total << diff
     end
-    @total = Time.at(total.sum).utc.strftime('%R')
+
+      @total = Time.at(total.sum).utc.strftime('%R')
   end
 
   def edit
