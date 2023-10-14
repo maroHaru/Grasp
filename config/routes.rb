@@ -33,7 +33,9 @@ Rails.application.routes.draw do
     resources :to_dos, only: [:index, :create, :update, :destroy]
   end
 
+
   patch '/timecards/finish', to: 'worker/timecards#finish'
+  get '/timecards/compare', to: 'worker/timecards#compare'
   scope module: :worker do
     resources :timecards, except: [:show]
   end

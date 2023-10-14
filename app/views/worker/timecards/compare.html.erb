@@ -1,54 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 text-left">
-　　  <h3><%= Date.current %> timecardリスト</h3>
+    <div class="col-md-2 text-left">
+　　  <h4>比較</h4>
 　　</div>
-　　<div class="col-md-5 text-left">
-　　  <h3>ToDo</h3>
-      <%= form_with model: @to_do do |f| %>
-        <%= f.text_field :name %>
-        <%= f.submit '追加' %>
-      <% end %>
-　　</div>
-    <div class="col-md-2 text-left mt-5">
-　　  <%= link_to "比較", timecards_compare_path, class: "btn btn-md btn-info" %>
+　　<div class="col-md-7 text-center">
 　　</div>
   </div>
-    <div class="row">
-    <div class="col-md-7 text-right">
-      <% if @daily_report.present? %>
-    　　  <%= form_with model: @daily_report, url: daily_reports_report_path, method: :patch do |f| %>
-    　　    <%= f.hidden_field :is_reported, :value => true %>
-    　　    <%= f.hidden_field :daily_report_id, :value => @daily_report.id %>
-    　　    <%= f.submit '日報報告', class: "btn btn-sm btn-primary" %>
-    　　  <% end %>
-　　  <% end %>
-　　</div>
-  </div>
-  <div class="row">
-    <div class="col-lg-2">
-      <h3>ToDoリスト</h3>
-      <% @to_dos.each do |to_do| %>
-      <table>
-        <tr>
-          <th><%= to_do.name %></th>
-          <td>
-            <%= form_with model: @to_do, url: to_dos_complete_path, method: :patch do |f| %>
-              <%= f.hidden_field :is_completed, :value => true %>
-              <%= f.hidden_field :to_do_id, :value => to_do.id %>
-              <%= f.submit '完了' %>
-            <% end %>
-          </td>
-        </tr>
-      </table>
-      <% end %>
-    </div>
-    <div class="col-lg-10 text-center">
-      <table class="table table-bordered">
+  <div class="row mt-5">
+    <div class="col-lg-12">
+　　　<table class="table table-bordered">
         <thead>
           <tr>
-            <th class="table-secondary w-20"></th>
-            <th class="table-secondary w-20"></th>
             <th class="table-secondary w-20">開始時間</th>
             <th class="table-secondary w-20">終了時間</th>
             <th class="table-secondary w-25">Client名</th>
@@ -60,8 +22,6 @@
         <tbody>
           <% @timecards.each do |timecard| %>
             <tr>
-              <td><%= link_to "編集", edit_timecard_path(timecard.id), class: "btn btn-md btn-success" %></td>
-              <td><%= link_to "削除", timecard_path(timecard.id), method: :delete, "data-confirm" => "本当に削除されますか？", class: "btn btn-sm btn-danger" %></td>
               <td><%= l timecard.start_time, format: :short %></td>
               <td>
                 <% if timecard.end_time.present? %>
@@ -107,11 +67,5 @@
         </tbody>
       </table>
     </div>
-  </div>
-    <div class="row">
-    <div class="col-md-12 text-right">
-　　  <h6>総時間</h6>
-　　  <%= @total %>
-　　</div>
   </div>
 </div>

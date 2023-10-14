@@ -61,6 +61,11 @@ class Worker::TimecardsController < ApplicationController
       @total = Time.at(total.sum).utc.strftime('%R')
   end
 
+  def compare
+    @timecards = current_worker.timecards.sort {|a,b| b.amount_of_time <=> a.amount_of_time}
+
+  end
+
   def edit
     @timecard = Timecard.find(params[:id])
   end
