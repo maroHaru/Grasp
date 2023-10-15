@@ -45,9 +45,11 @@ Rails.application.routes.draw do
     resources :daily_reports, only: [:index, :create, :show]
   end
 
+
   namespace :admin do
     resources :workers, only: [:index, :show]
   end
+  get '/admin/workers/:id/calendar', to: 'admin/workers#calendar', as: 'admin_worker_calendar'
 
   namespace :admin do
     resources :daily_reports, only: [:index, :show] do

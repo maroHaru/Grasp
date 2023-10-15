@@ -2,8 +2,10 @@ class Admin::DailyReportsController < ApplicationController
 
   def index
     # @daily_report = DailyReport.all
-    @timecards = @daily_report.timecards
+    # @timecards = @daily_report.timecards
     # indexではなくてshowが必要かもしれないBookers2を参考にして確認
+    @worker = Worker.find(params[:id])
+    @daily_reports = @worker.daily_reports
   end
 
   def show
@@ -11,6 +13,7 @@ class Admin::DailyReportsController < ApplicationController
     # @worker = Worker.find(params[:id])
     @timecards = @daily_report.timecards
     @comment = Comment.new
+    # @worker = @daily_reports.worker
     # total = []
     # @daily_report.timecards.each do |card|
     # # @daily_report = card.daily_report

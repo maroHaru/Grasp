@@ -9,4 +9,10 @@ class Admin::WorkersController < ApplicationController
     @daily_reports = @worker.daily_reports
     # @comments = @daily_report.comments
   end
+
+  def calendar
+    @worker = Worker.find(params[:id])
+    @timecards = @worker.timecards
+    @daily_reports = @worker.daily_reports
+  end
 end

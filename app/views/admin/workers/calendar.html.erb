@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 text-left">
+　　  <h3><%= @worker.name %>さんのカレンダー</h3>
+　　</div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <%= month_calendar events: @timecards do | date, timecard | %>
+        <%= date.day %>
+        <% total = [] %>
+        <% timecard.each do | timecard | %>
+          <% diff = timecard.end_time - timecard.start_time %>
+          <% total << diff %>
+        <% end %>
+        <%= total = Time.at(total.sum).utc.strftime('%R') %>
+      <% end %>
+    </div>
+  </div>
+</div>

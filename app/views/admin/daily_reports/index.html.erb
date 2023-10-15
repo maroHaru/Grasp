@@ -1,4 +1,4 @@
-<%= month_calendar events: @timecards do | date, timecard | %>
+<%= month_calendar events: @daily_reports.timecard do | date, timecard | %>
  <%= date.day %>
  <% total = [] %>
  <% timecard.each do | timecard | %>
