@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5 text-left">
-　　  <h2><%= @daily_report.reported_date %> <%= @daily_report.worker.name %>さんのtimecardリスト</h2>
+　　  <h2><%= @daily_report.reported_date %><%= @daily_report.worker.name %> さんのtimecardリスト</h2>
+　　</div>
+　　<div class="col-md-3 text-left mt-5">
+　　  <%= link_to "日報一覧", admin_worker_path(@daily_report.worker_id), class: "btn btn-md btn-info" %>
+　　</div>
+　　<div class="col-md-3 text-left mt-5">
+　　  <%= link_to "カレンダー", admin_worker_calendar_path(@daily_report.worker.id), class: "btn btn-md btn-warning" %>
 　　</div>
   </div>
   <div class="row">

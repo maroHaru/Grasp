@@ -10,7 +10,6 @@ class Admin::DailyReportsController < ApplicationController
 
   def show
     @daily_report = DailyReport.find(params[:id])
-    # @worker = Worker.find(params[:id])
     @timecards = @daily_report.timecards
     @comment = Comment.new
     # @worker = @daily_reports.worker
