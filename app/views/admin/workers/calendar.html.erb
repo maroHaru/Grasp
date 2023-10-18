@@ -10,10 +10,12 @@
         <%= date.day %>
         <% total = [] %>
         <% timecard.each do | timecard | %>
-          <% diff = timecard.end_time - timecard.start_time %>
-          <% total << diff %>
+        　<% if timecard.end_time.present? %>
+            <% diff = timecard.end_time - timecard.start_time %>
+            <% total << diff %>
+        　<% end %>
         <% end %>
-        <%= total = Time.at(total.sum).utc.strftime('%R') %>
+          <%= total = Time.at(total.sum).utc.strftime('%R') %>
       <% end %>
     </div>
   </div>
