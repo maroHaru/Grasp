@@ -12,7 +12,7 @@
         <%= f.label :job, "業務内容を選択" %></br>
         <%= f.select :job_id, options_from_collection_for_select(current_worker.jobs, :id, :description), {include_blank: '---未選択---'} %></br>
         <%= f.label :to_do, "To Doリストから選択" %></br>
-        <%= f.select :to_do_id, options_from_collection_for_select(current_worker.to_dos, :id, :name), {include_blank: '---未選択---'} %></br>
+        <%= f.select :to_do_id, options_from_collection_for_select(current_worker.to_dos.where(is_completed: false), :id, :name), {include_blank: '---未選択---'} %></br>
         <%= f.label :memo, "メモ" %></br>
         <%= f.text_area :memo %></br>
         <%= f.submit '開始', class: "btn btn-md btn-primary" %>
