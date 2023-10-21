@@ -20,7 +20,7 @@
     　　  <%= form_with model: @daily_report, url: daily_reports_report_path, method: :patch do |f| %>
     　　    <%= f.hidden_field :is_reported, :value => true %>
     　　    <%= f.hidden_field :daily_report_id, :value => @daily_report.id %>
-    　　    <%= f.submit '日報報告', class: "btn btn-sm btn-primary" %>
+    　　    <%= f.submit '日報報告', "data-confirm" => "本当に提出されますか？", class: "btn btn-sm btn-primary" %>
     　　  <% end %>
 　　  <% end %>
 　　</div>

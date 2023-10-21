@@ -45,7 +45,7 @@ class Worker::TimecardsController < ApplicationController
     # @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
     # @daily_report = DailyReport.find(params[:daily_report])
     today = Date.today
-    @daily_report = current_worker.daily_reports.find_by(reported_date: today)
+    @daily_report = current_worker.daily_reports.find_by(reported_date:  today)
 
 
     total = []

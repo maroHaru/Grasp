@@ -10,15 +10,21 @@
   <div class="row">
     <div class="col-md-12 text-center">
       <%= month_calendar events: @timecards do | date, timecard | %>
-        <%= date.day %>
-        <% total = [] %>
+        <div class="text-left">
+          <%= date.day %>
+        </div>
+        <% @total = [] %>
         <% timecard.each do | timecard | %>
         　<% if timecard.end_time.present? %>
             <% diff = timecard.end_time - timecard.start_time %>
-            <% total << diff %>
+            <% @total << diff %>
         　<% end %>
         <% end %>
-          <%= total = Time.at(total.sum).utc.strftime('%R') %>
+        <% if @total.present? %>
+          <div>
+            <%= @total = Time.at(@total.sum).utc.strftime('%R') %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
