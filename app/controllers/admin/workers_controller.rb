@@ -13,6 +13,7 @@ class Admin::WorkersController < ApplicationController
   def calendar
     @worker = Worker.find(params[:id])
     @timecards = @worker.timecards
-    @daily_reports = @worker.daily_reports
+    @daily_report = @worker.daily_reports
+    # @daily_report = DailyReport.find(params[:id])
   end
 end

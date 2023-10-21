@@ -22,7 +22,7 @@
         <% end %>
         <% if @total.present? %>
           <div>
-            <%= @total = Time.at(@total.sum).utc.strftime('%R') %>
+            <%= link_to @total = Time.at(@total.sum).utc.strftime('%R'), admin_daily_report_path(timecard[0].daily_report_id) %>
           </div>
         <% end %>
       <% end %>
