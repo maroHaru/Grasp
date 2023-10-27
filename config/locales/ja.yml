@@ -1,4 +1,9 @@
 ja:
+  enums:
+    notification:
+      action:
+        comment: "コメント"
+        checked_item: "確認済みアイテム"
   date:
     abbr_day_names:
     - 日

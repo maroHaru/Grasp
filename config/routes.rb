@@ -61,5 +61,13 @@ Rails.application.routes.draw do
     resources :timecards, only: [:index, :show]
   end
 
+  namespace :admin do
+    resources :notifications, only: [:index, :update]
+  end
+
+  scope module: :worker do
+    resources :notifications, only: [:index, :update]
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
