@@ -1,0 +1,9 @@
+<h4>従業員通知画面</h4>
+<%= @notifications.inspect %>
+<p>********************************************</p>
+<% @notifications.each do |notification| %>
+  <% if notification.is_checked? %>
+    <% else %>
+    <%= notification.visited_id %>あなたへのコメントがあります。
+    <% end %>
+<% end %>

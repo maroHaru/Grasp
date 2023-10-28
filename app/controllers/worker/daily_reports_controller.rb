@@ -10,6 +10,9 @@ class Worker::DailyReportsController < ApplicationController
 
   def index
     @daily_reports = current_worker.daily_reports
+    # @comments = @daily_reports.comments
+    # @notifications = @daily_reports.comment.notifications
+    # @notifications = Notification.find_by(action_id: @comment_id)
   end
 
   def show
