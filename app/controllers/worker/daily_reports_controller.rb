@@ -20,6 +20,12 @@ class Worker::DailyReportsController < ApplicationController
     # @daily_report.id = DailyReport.find_or_initialize_by
     # @comment.build_daily_report
     @comments = @daily_report.comments
+    @comment = @daily_report.comments.first
+    @notification = false
+    if @comment.present?
+      @notification = Notification.where(visited_id: current_worker.id).where(action_id: @comment.id).first
+
+    end
     # @comment.build_daily_report.comments.
     # @daily_report.id = @comment.daily_report.id
     @timecards = current_worker.timecards

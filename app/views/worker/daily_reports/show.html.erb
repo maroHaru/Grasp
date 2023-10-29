@@ -68,6 +68,12 @@
 　　  <%= @daily_report.id %>
 　　  <% @comments.each do |comment| %>
 　　    <%= comment.comment %>
+　　    <% if @notification.present? %>
+    　　    <%= form_with model: @notification, url: notification_path(@notification), method: :patch do |f| %>
+    　　      <%= f.hidden_field :is_checked, :value => true %>
+    　　      <%= f.submit "確認", class: "btn btn-sm btn-success" %>
+    　　    <% end %>
+　　    <% end %>
 　　  <% end %>
 　　</div>
 　</div>
