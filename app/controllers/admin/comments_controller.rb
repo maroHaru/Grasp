@@ -14,6 +14,11 @@ class Admin::CommentsController < ApplicationController
     redirect_to admin_worker_path(daily_report.worker.id)
   end
 
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to admin_daily_report_path(params[:daily_report_id])
+  end
+
   private
 
   def comment_params

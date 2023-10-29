@@ -12,6 +12,7 @@ class Admin::DailyReportsController < ApplicationController
     @daily_report = DailyReport.find(params[:id])
     @timecards = @daily_report.timecards
     @comment = Comment.new
+    @comments = @daily_report.comments
     # @worker = @daily_reports.worker
     total = []
     @daily_report.timecards.each do |card|

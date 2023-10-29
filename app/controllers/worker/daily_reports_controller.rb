@@ -10,13 +10,18 @@ class Worker::DailyReportsController < ApplicationController
 
   def index
     @daily_reports = current_worker.daily_reports
-    # @comments = @daily_reports.comments
-    # @notifications = @daily_reports.comment.notifications
-    # @notifications = Notification.find_by(action_id: @comment_id)
+    # @comment = @daily_report.comment
+    # @notifications = @daily_reports.comment.id.notifications
+    @notifications = Notification.all
   end
 
   def show
     @daily_report = DailyReport.find(params[:id])
+    # @daily_report.id = DailyReport.find_or_initialize_by
+    # @comment.build_daily_report
+    @comments = @daily_report.comments
+    # @comment.build_daily_report.comments.
+    # @daily_report.id = @comment.daily_report.id
     @timecards = current_worker.timecards
     total = []
     @daily_report.timecards.each do |card|

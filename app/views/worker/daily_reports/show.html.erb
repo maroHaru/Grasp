@@ -64,6 +64,15 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-right">
+　　  <h6>コメント</h6>
+　　  <%= @daily_report.id %>
+　　  <% @comments.each do |comment| %>
+　　    <%= comment.comment %>
+　　  <% end %>
+　　</div>
+　</div>
+  <div class="row">
+    <div class="col-md-12 text-right">
 　　  <h6>総時間</h6>
 　　  <%= @total %>
 　　</div>

@@ -10,7 +10,7 @@ class Worker < ApplicationRecord
   has_many :daily_reports
   has_many :visiter, class_name: 'Notification', foreign_key: 'visiter_id'
   has_many :visited, class_name: 'Notification', foreign_key: 'visited_id'
-  has_many :notifications, as: :notifiable
+  has_many :notifications, dependent: :destroy
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com',

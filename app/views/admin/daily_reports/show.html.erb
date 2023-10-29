@@ -70,9 +70,16 @@
   </div>
   <div class="row">
     <div class="col-md-7 text-right">
-　　  <%= form_with model: [@daily_report, @comment], url: admin_daily_report_comments_path(@daily_report.id), method: :post do |f| %>
-　　    <%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>
-　　    <%= f.submit "コメント送信" %>
+      <% if @comments.present? %>
+        <% @comments.each do |comment| %>
+          <%= comment.comment %>
+          <%= link_to "削除", admin_daily_report_comment_path(comment.daily_report, comment), method: :delete, "data-confirm" => "本当に削除されますか？", class: "btn btn-sm btn-danger" %>
+        <% end %>
+      <% else %>
+    　　  <%= form_with model: [@daily_report, @comment], url: admin_daily_report_comments_path(@daily_report.id), method: :post do |f| %>
+    　　    <%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>
+    　　    <%= f.submit "コメント送信" %>
+　　    <% end %>
 　　  <% end %>
 　　</div>
     <div class="col-md-4 text-right">

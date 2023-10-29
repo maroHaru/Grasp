@@ -34,6 +34,12 @@
               <td>
                 <% daily_report.comments.each do |comment| %>
                   <%= comment.comment %>
+                  <% @notifications.each do |notification| %>
+                    <% if notification.is_checked? %>
+                    <% else %>
+                      New
+                    <% end %>
+                  <% end %>
                 <% end %>
               </td>
             </tr>
