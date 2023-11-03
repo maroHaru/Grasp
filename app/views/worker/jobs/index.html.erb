@@ -1,24 +1,33 @@
-<div class="container mt-5">
+<div class="container mt-1">
   <div class="row">
     <div class="col-md-2"></div>
-    <div class="col-md-5">
-      <h5 class="mb-4">業務内容一覧・追加!</h5>
-
-　　　<%= form_with model: @job, url: '/jobs/', method: :post do |f| %>
-        <b class="mb-2">業務内容</b>
-        <div class="col-md-5 mb-5">
-          <%= f.text_field :description, class: "form-control" %>
-        </div>
-        <div class="col-md-3 text-center">
-          <%= f.submit '新規登録', class: "btn btn-md btn-success" %>
-        </div>
-      <% end %>
-
-      <div class="col-md-8 offset-md-1">
+    <div class="col-md-8 mb-5">
+      <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th height="60", class="h4">業務内容 追加</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+  　　  　<%= form_with model: @job, url: '/jobs/', method: :post do |f| %>
+    　　　  <tr>
+    　　　    <td><%= f.text_field :description, size: 50, class: "form-control" %></td>
+    　　　    <td width="30"></td>
+    　　　    <td><%= f.submit '新規追加', class: "btn btn-md btn-success" %></td>
+    　　　  </tr>
+        <% end %>
+        </tbody>
+      </table>
+      </div>
+      <div class="row mt-5">
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>業務内容</th>
+            <th class="h5">業務内容</th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
@@ -26,8 +35,8 @@
           <% @jobs.each do |job| %>
             <tr>
               <td><%= job.description %></td>
-              <td><%= link_to "編集する", edit_job_path(job.id), class: "btn btn-md btn-success" %>
-                  <%= link_to "削除する", job_path(job.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
+              <td><%= link_to "編集する", edit_job_path(job.id), class: "btn btn-md btn-success" %></td>
+              <td><%= link_to "削除する", job_path(job.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
             </tr>
           <% end %>
         </tbody>

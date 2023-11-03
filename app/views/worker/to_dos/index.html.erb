@@ -1,28 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 text-left">
-　　  <h2>ToDo完了リスト</h2>
-　　</div>
-　　<div class="col-md-7 text-center">
-　　　<h1>ToDo</h1>
+    <div class="col-md-3"></div>
+    <h1>ToDo</h1>
+　　<div class="col-md-12 text-center mt-1">
       <%= form_with model: @to_do do |f| %>
-        <%= f.text_field :name %>
-        <%= f.submit '追加' %>
+        <%= f.text_field :name, size: 45 %>
+        <%= f.submit '追加', class: "btn btn-info"%>
       <% end %>
 　　</div>
   </div>
-  <div class="row mt-5">
-    <div class="col-md-7 text-center">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <h1>ToDo完了リスト</h1>
+    <div class="col-md-3"></div>
+    <div class="col-md-3"></div>
+    <div class="col-md-7 mt-3 mb-5">
       <% @complete_to_dos.each do |to_do| %>
       <table>
         <tr>
-          <th><%= to_do.completed_date %></th>
+          <th class="h5"><%= to_do.completed_date %></th>
+          <td style="width: 10%"></td>
           <td><%= to_do.name %></td>
         </tr>
       </table>
       <% end %>
-    </div>
-    <div class="col-lg-6">
     </div>
   </div>
 </div>
