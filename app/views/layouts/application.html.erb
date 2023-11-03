@@ -16,52 +16,52 @@
         <div class="container">
           <% if worker_signed_in? %>
             <li>
-              <%= link_to "従業員ログアウト", destroy_worker_session_path, method: :delete %>
+              <%= link_to "従業員ログアウト", destroy_worker_session_path, method: :delete, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "ゲストログアウト", workers_guest_sign_out_path, method: :delete %>
+              <%= link_to "ゲストログアウト", workers_guest_sign_out_path, method: :delete, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "業務内容", jobs_path %>
+              <%= link_to "業務内容", jobs_path, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "日報一覧", daily_reports_path %>
+              <%= link_to "日報一覧", daily_reports_path, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "ToDo完了", to_dos_path %>
+              <%= link_to "ToDo完了", to_dos_path, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "通知", notifications_path %>
+              <%= link_to "通知", notifications_path, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "管理", timecards_path %>
+              <%= link_to "管理", timecards_path, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "Start", new_timecard_path %>
+              <%= link_to "Start", new_timecard_path, class: "btn btn-light border" %>
             </li>
 
           <% elsif admin_signed_in? %>
             <li>
-              <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+              <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "従業員一覧", admin_workers_path %>
+              <%= link_to "従業員一覧", admin_workers_path, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "通知", admin_notifications_path %>
+              <%= link_to "通知", admin_notifications_path, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "Client", admin_clients_path %>
+              <%= link_to "Client", admin_clients_path, class: "btn btn-light border" %>
             </li>
           <% else %>
             <li>
-              <%= link_to "従業員ログイン", new_worker_session_path %>
+              <%= link_to "従業員ログイン", new_worker_session_path, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "ゲストログイン", workers_guest_sign_in_path, method: :post %>
+              <%= link_to "ゲストログイン", workers_guest_sign_in_path, method: :post, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "管理者ログイン", new_admin_session_path %>
+              <%= link_to "管理者ログイン", new_admin_session_path, class: "btn btn-light border" %>
             </li>
           <% end %>
         </div>
