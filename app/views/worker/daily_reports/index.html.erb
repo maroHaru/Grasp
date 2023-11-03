@@ -3,6 +3,8 @@
     <div class="col-md-5 text-left">
 　　  <h1>日報リスト</h1>
 　　  <%= @notifications.inspect %>
+　　  <p>**********************************************</p>
+　　  <%= @notification.inspect %>
 　　</div>
   </div>
   <div class="row">
@@ -34,7 +36,8 @@
               <td>
                 <% daily_report.comments.each do |comment| %>
                   <%= comment.comment %>
-                  <% @notifications.each do |notification| %>
+                  <%= comment.id %>
+                  <% @notification.each do |notification| %>
                     <% if notification.is_checked? %>
                     <% else %>
                       New

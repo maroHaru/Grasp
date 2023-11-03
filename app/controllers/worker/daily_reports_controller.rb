@@ -13,6 +13,7 @@ class Worker::DailyReportsController < ApplicationController
     # @comment = @daily_report.comment
     # @notifications = @daily_reports.comment.id.notifications
     @notifications = Notification.all
+    @notification = Notification.where(visited_id: current_worker.id)
   end
 
   def show
