@@ -11,7 +11,7 @@ class Admin::CommentsController < ApplicationController
       Notification.create!({visiter_id: current_admin.id, visited_id: daily_report.worker_id, action_id: @comment.id, action: 'comment'})
       # comment.notifications.build({visiter_id: current_admin, visited_id: daily_report.worker_id, action_id: comment.id, action: 0})
     end
-    redirect_to admin_worker_path(daily_report.worker.id)
+    redirect_to admin_daily_report_path(daily_report.id)
   end
 
   def destroy

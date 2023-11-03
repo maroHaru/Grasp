@@ -77,12 +77,12 @@
         <% end %>
       <% else %>
     　　  <%= form_with model: [@daily_report, @comment], url: admin_daily_report_comments_path(@daily_report.id), method: :post do |f| %>
-    　　    <%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>
-    　　    <%= f.submit "コメント送信" %>
+    　　    <%= f.text_area :comment, rows: '4',cols: '50', placeholder: "コメントを入力" %>
+    　　    <%= f.submit "コメント送信" , class: "btn btn-md btn-success" %>
 　　    <% end %>
 　　  <% end %>
 　　</div>
-    <div class="col-md-5 text-right">
+    <div class="col-md-5 mt-5 text-right">
 　　  <b>総時間</b>
 　　  <%= @total %>
 　　</div>
