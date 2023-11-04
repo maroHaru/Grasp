@@ -63,3 +63,7 @@ gem 'rails-i18n', '~>6.0'
 gem 'simple_calendar'
 
 gem 'enum_help'
+
+group :development do
+  gem 'rails-erd'
+end
