@@ -15,7 +15,10 @@ class Admin::CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
+    comment = Comment.find(params[:id])
+    @notification = Notification.find_by_action_and_action_id("comment", comment.id)
+    @notification.update!(is_checked: true)
+    comment.destroy
     redirect_to admin_daily_report_path(params[:daily_report_id])
   end
 
