@@ -11,6 +11,7 @@ class Admin::CommentsController < ApplicationController
       Notification.create!({visiter_id: current_admin.id, visited_id: daily_report.worker_id, action_id: @comment.id, action: 'comment'})
       # comment.notifications.build({visiter_id: current_admin, visited_id: daily_report.worker_id, action_id: comment.id, action: 0})
     end
+    flash[:notice] = "コメントが送信されました。"
     redirect_to admin_daily_report_path(daily_report.id)
   end
 
@@ -19,6 +20,7 @@ class Admin::CommentsController < ApplicationController
     @notification = Notification.find_by_action_and_action_id("comment", comment.id)
     @notification.update!(is_checked: true)
     comment.destroy
+    flash[:notice] = "コメントが削除されました。"
     redirect_to admin_daily_report_path(params[:daily_report_id])
   end
 

@@ -63,7 +63,6 @@ class Worker::TimecardsController < ApplicationController
 
   def compare
     @timecards = current_worker.timecards.sort {|a,b| b.amount_of_time <=> a.amount_of_time}
-
   end
 
   def edit

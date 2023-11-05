@@ -3,7 +3,7 @@ class Worker::ToDosController < ApplicationController
   def index
     @to_do = ToDo.new
     # @to_dos = ToDo.where(is_completed: false)
-    @complete_to_dos = current_worker.to_dos.where(is_completed: true)
+    @complete_to_dos = current_worker.to_dos.where(is_completed: true).order('id DESC')
     # @to_dos = ToDo.all (←未完了も完了も全て表示されてしまう。。)
     # ToDo.where(is_completed: "false") ←完了ステータスがFALSEのものだけ表示する事が可能
   end

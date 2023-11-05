@@ -45,6 +45,7 @@ class Worker::DailyReportsController < ApplicationController
   def report
     @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
     @daily_report.update(is_reported: true)
+    flash[:notice] = "日報が提出されました。"
     redirect_to timecards_path
     @timecards = @daily_report.timecards
   end
