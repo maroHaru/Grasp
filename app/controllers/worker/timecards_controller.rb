@@ -1,4 +1,5 @@
 class Worker::TimecardsController < ApplicationController
+  before_action :is_matching_login_worker, only: [:edit, :update]
 
   def new
     @timecard = Timecard.new
@@ -88,11 +89,19 @@ class Worker::TimecardsController < ApplicationController
     timecard.destroy
     redirect_to timecards_path
   end
-  
+
   private
 
 
   def timecard_params
     params.require(:timecard).permit(:daily_report_id, :worker_id, :client_id, :job_id, :to_do_id, :memo, :start_time, :end_time)
   end
+
+  def is_matching_login_worker
+    timecard = Timecard.find(params[:id])
+    unless timecard.worker_id == current_worker.id
+      redirect_to timecards_path
+    end
+  end
+
 end
