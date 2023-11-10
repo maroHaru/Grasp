@@ -1,4 +1,5 @@
 class Worker::DailyReportsController < ApplicationController
+  before_action :is_matching_login_worker, only: [:show]
 
   def create
     daily_report = DailyReport.new(daily_report_params)
@@ -50,8 +51,18 @@ class Worker::DailyReportsController < ApplicationController
     @timecards = @daily_report.timecards
   end
 
+  private
+
 
   def daily_report_params
     params.require(:daily_report).permit(:worker_id, :is_reported, :reported_date)
   end
+
+  def is_matching_login_worker
+    daily_report = DailyReport.find(params[:id])
+    unless daily_report.worker_id == current_worker.id
+      redirect_to daily_reports_path
+    end
+  end
+
 end

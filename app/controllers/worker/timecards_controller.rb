@@ -88,6 +88,8 @@ class Worker::TimecardsController < ApplicationController
     timecard.destroy
     redirect_to timecards_path
   end
+  
+  private
 
 
   def timecard_params
