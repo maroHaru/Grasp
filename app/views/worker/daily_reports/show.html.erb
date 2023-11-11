@@ -63,23 +63,26 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12 text-right">
-　　  <h6>コメント</h6>
+    <div class="col-md-12 text-left">
+　　  <span class="bg-warning px-2 text-white">コメント</span>
 　　  <% @comments.each do |comment| %>
 　　    <%= comment.comment %>
 　　    <% if @notification.present? %>
-    　　    <%= form_with model: @notification, url: notification_path(@notification), method: :patch do |f| %>
-    　　      <%= f.hidden_field :is_checked, :value => true %>
-    　　      <%= f.submit "確認", class: "btn btn-sm btn-success" %>
-    　　    <% end %>
+　　      <% if @notification.is_checked? %>
+　　      <% else %>
+      　　    <%= form_with model: @notification, url: notification_path(@notification), method: :patch do |f| %>
+      　　      <%= f.hidden_field :is_checked, :value => true %>
+      　　      <%= f.submit "確認", class: "btn btn-sm btn-success" %>
+      　　    <% end %>
+　　      <% end %>
 　　    <% end %>
 　　  <% end %>
 　　</div>
 　</div>
   <div class="row">
     <div class="col-md-12 text-right">
-　　  <h6>総時間</h6>
-　　  <%= @total %>
+　　  <b>総時間</b>
+　　  <b><%= @total %></b>
 　　</div>
   </div>
 </div>
