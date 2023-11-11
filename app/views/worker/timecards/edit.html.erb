@@ -22,12 +22,12 @@
         <h6>業務内容</h6>
         <div class="field">
           <label for="inputjob" class="form-label"></label>
-          <%= f.select :job_id, options_from_collection_for_select(Job.all, :id, :description), {include_blank: '---未選択---'}, autofocus: true, id:"inputjob", placeholder:"業務内容を選択" %>
+          <%= f.select :job_id, options_from_collection_for_select(current_worker.jobs, :id, :description), {include_blank: '---未選択---'}, autofocus: true, id:"inputjob", placeholder:"業務内容を選択" %>
         </div>
         <h6>To Do</h6>
         <div class="field">
           <label for="inputtodo" class="form-label"></label>
-          <%= f.select :to_do_id, options_from_collection_for_select(ToDo.all, :id, :name), {include_blank: '---未選択---'}, autofocus: true, id:"inputtodo", placeholder:"To Doリストから選択" %>
+          <%= f.select :to_do_id, options_from_collection_for_select(current_worker.to_dos.where(is_completed: false), :id, :name), {include_blank: '---未選択---'}, autofocus: true, id:"inputtodo", placeholder:"To Doリストから選択" %>
         </div>
         <h6>メモ</h6>
         <div class="field">
