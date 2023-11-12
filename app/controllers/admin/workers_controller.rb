@@ -6,7 +6,7 @@ class Admin::WorkersController < ApplicationController
 
   def show
     @worker = Worker.find(params[:id])
-    @daily_reports = @worker.daily_reports
+    @daily_reports = @worker.daily_reports.where(id: 18...)
     # @comments = @daily_report.comments
   end
 

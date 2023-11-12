@@ -9,7 +9,7 @@ class Worker::NotificationsController < ApplicationController
   def update
     @notification = Notification.find(params[:id])
     @notification.update(is_checked: true)
-    redirect_to notifications_path
+    redirect_to daily_reports_path
   end
 
   private
