@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/56822bfd93.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -25,7 +25,12 @@
               <%= link_to "業務内容", jobs_path, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "日報一覧", daily_reports_path, class: "btn btn-light border" %>
+              <%= link_to  daily_reports_path, class: "btn btn-light border" do %>
+                <% if unchecked_notifications.any? %>
+                  <i class="fa-solid fa-circle" style="color: gold;"></i>
+                <% end %>
+                日報一覧
+              <% end %>
             </li>
             <li>
               <%= link_to "ToDo完了", to_dos_path, class: "btn btn-light border" %>
