@@ -33,10 +33,10 @@
               <td>
                 <% daily_report.comments.each do |comment| %>
                   <%= comment.comment %>
-                    <% if Notification.find_by_action_and_action_id("comment", comment.id)&.is_checked? %>
-                    <% else %>
-                      <span class="text-warning">New</span>
-                    <% end %>
+                  <% if Notification.find_by_action_and_action_id("comment", comment.id)&.is_checked? %>
+                  <% else %>
+                    <span class="text-warning">New</span>
+                  <% end %>
                 <% end %>
               </td>
             </tr>

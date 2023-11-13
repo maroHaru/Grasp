@@ -9,6 +9,7 @@ class Admin::DailyReportsController < ApplicationController
   end
 
   def show
+    # flash[:notice] = "Hello!"
     @daily_report = DailyReport.find(params[:id])
     @timecards = @daily_report.timecards
     @comment = Comment.new

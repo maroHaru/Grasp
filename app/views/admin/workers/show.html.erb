@@ -35,6 +35,10 @@
               <td>
                 <% daily_report.comments.each do |comment| %>
                   <%= comment.comment %>
+                  <% if Notification.find_by_action_and_action_id("comment", comment.id)&.is_checked? %>
+                  <% else %>
+                    <span class="text-danger">未読</span>
+                  <% end %>
                 <% end %>
               </td>
             </tr>
