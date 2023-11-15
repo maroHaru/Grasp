@@ -6,6 +6,7 @@
     <div class="col-md-5 text-right mt-4">
 　　  <%= link_to "カレンダー", admin_worker_calendar_path(@worker), class: "btn btn-md btn-warning" %>
 　　</div>
+　</div>
   <div class="row">
     <div class="col-md-12 text-center">
       <table class="table table-bordered">
@@ -45,6 +46,13 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 mt-5">
+    </div>
+    <div class="col-md-5 mx-auto mt5">
+      <%= paginate @daily_reports %>
     </div>
   </div>
 </div>
