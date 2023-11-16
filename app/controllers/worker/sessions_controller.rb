@@ -18,7 +18,8 @@ class Worker::SessionsController < Devise::SessionsController
   def guest_sign_in
     worker = Worker.guest
     sign_in worker
-    redirect_to root_path
+    flash[:notice] = "Hello!"
+    redirect_to timecards_path
   end
 
   def guest_sign_out

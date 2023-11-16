@@ -19,7 +19,6 @@
     <div class="col-md-11 text-right">
       <% if @daily_report.present? %>
         <% if @daily_report.is_reported? %>
-          <p>提出済</p>
         <% else %>
       　　  <%= form_with model: @daily_report, url: daily_reports_report_path, method: :patch do |f| %>
       　　    <%= f.hidden_field :is_reported, :value => true %>
