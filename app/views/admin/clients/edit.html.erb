@@ -4,12 +4,10 @@
     <div class="col-md-5">
       <h5 class="mb-4">Client編集</h5>
       <%= form_with model: @client, url: admin_client_path, method: :patch do |f| %>
-        <h6>Client名</h6>
         <div class="field">
           <label for="inputclient" class="form-label"></label>
           <%= f.text_field :name, autofocus: true, id:"inputclient", placeholder:"Client", class: "form-control" %>
         </div>
-
         <div class="col-sm-4 text-center mt-4">
           <%= f.submit "変更を保存", class: "btn btn-md btn-success" %>
         </div>

@@ -1,7 +1,7 @@
 class Admin::ClientsController < ApplicationController
-  
+
   def index
-    @clients = Client.all
+    @clients = Client.page(params[:page]).per(10)
     @client = Client.new
   end
 
@@ -20,7 +20,6 @@ class Admin::ClientsController < ApplicationController
     @client.update(client_params)
     redirect_to admin_clients_path
   end
-
 
   private
 
