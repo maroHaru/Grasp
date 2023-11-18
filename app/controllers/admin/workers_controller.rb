@@ -6,7 +6,7 @@ class Admin::WorkersController < ApplicationController
 
   def show
     @worker = Worker.find(params[:id])
-    @daily_reports = @worker.daily_reports.where(id: 18...).order("created_at DESC").page(params[:page]).per(5)
+    @daily_reports = @worker.daily_reports.order("created_at DESC").page(params[:page]).per(5)
     # @comments = @daily_report.comments
   end
 

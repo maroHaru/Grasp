@@ -10,9 +10,7 @@ class Worker::DailyReportsController < ApplicationController
   end
 
   def index
-    @daily_reports = current_worker.daily_reports.where(id: 20...).order("created_at DESC").page(params[:page]).per(5)
-    # @comment = @daily_report.comment
-    # @notifications = @daily_reports.comment.id.notifications
+    @daily_reports = current_worker.daily_reports.order("created_at DESC").page(params[:page]).per(5)
     @notifications = Notification.all
     @notification = Notification.where(visited_id: current_worker.id)
   end
