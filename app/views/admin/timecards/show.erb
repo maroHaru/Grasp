@@ -1,9 +1,0 @@
-<%= month_calendar events: @timecard do | date, timecard | %>
- <%= date.day %>
- <% total = [] %>
- <% timecard.each do | timecard | %>
-   <% diff = timecard.end_time - timecard.start_time %>
-   <% total << diff %>
- <% end %>
- <%= total = Time.at(total.sum).utc.strftime('%R') %>
-<% end %>

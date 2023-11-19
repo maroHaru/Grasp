@@ -52,21 +52,17 @@ Rails.application.routes.draw do
   get '/admin/workers/:id/calendar', to: 'admin/workers#calendar', as: 'admin_worker_calendar'
 
   namespace :admin do
-    resources :daily_reports, only: [:index, :show] do
+    resources :daily_reports, only: [:show] do
       resources :comments, only: [:create, :destroy]
     end
   end
 
   namespace :admin do
-    resources :timecards, only: [:index, :show]
-  end
-
-  namespace :admin do
-    resources :notifications, only: [:index, :update]
+    resources :notifications, only: [:update]
   end
 
   scope module: :worker do
-    resources :notifications, only: [:index, :update]
+    resources :notifications, only: [:update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

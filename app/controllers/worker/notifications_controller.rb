@@ -1,9 +1,5 @@
 class Worker::NotificationsController < ApplicationController
 
-  def index
-    @notifications = Notification.where(visited_id: current_worker.id).order('id DESC').limit(3)
-  end
-
   def update
     @notification = Notification.find(params[:id])
     @notification.update(is_checked: true)

@@ -1,10 +1,5 @@
 class Admin::DailyReportsController < ApplicationController
 
-  def index
-    @worker = Worker.find(params[:id])
-    @daily_reports = @worker.daily_reports
-  end
-
   def show
     @daily_report = DailyReport.find(params[:id])
     @timecards = @daily_report.timecards
