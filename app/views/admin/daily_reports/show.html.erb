@@ -43,7 +43,10 @@
                 <% end %>
               </td>
               <td>
-                <% if timecard.job.present? %>
+                <% if timecard.job.present? && timecard.to_do.present? %>
+                  <%= timecard.job.description %> /
+                  <%= timecard.to_do.name %>
+                <% elsif timecard.job.present? %>
                   <%= timecard.job.description %>
                 <% elsif timecard.to_do.present? %>
                   <%= timecard.to_do.name %>
