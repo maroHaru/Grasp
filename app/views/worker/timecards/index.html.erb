@@ -7,7 +7,7 @@
 　　<div class="col-md-5 text-left">
 　　  <h3>ToDo</h3>
       <%= form_with model: @to_do do |f| %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, size: 45 %>
         <%= f.submit '追加', class: "btn btn-sm btn-info" %>
       <% end %>
 　　</div>
@@ -33,7 +33,7 @@
     <div class="col-md-2">
       <h3>ToDoリスト</h3>
       <% @to_dos.each do |to_do| %>
-      <table>
+      <table class="table table-hover">
         <tr>
           <th><%= to_do.name %></th>
           <td>
@@ -98,7 +98,10 @@
                 <% end %>
               </td>
               <td>
-                <% if timecard.job.present? %>
+                <% if timecard.job.present? && timecard.to_do.present? %>
+                  <%= timecard.job.description %> /
+                  <%= timecard.to_do.name %>
+                <% elsif timecard.job.present? %>
                   <%= timecard.job.description %>
                 <% elsif timecard.to_do.present? %>
                   <%= timecard.to_do.name %>
