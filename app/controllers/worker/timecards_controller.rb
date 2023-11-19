@@ -31,7 +31,6 @@ class Worker::TimecardsController < ApplicationController
   end
 
   def index
-    # pp "current-----------------------------#{current_worker.id}"
     @to_do = ToDo.new
     @to_dos = current_worker.to_dos.where(is_completed: false)
     @timecards = current_worker.timecards.where(start_time: Time.current.beginning_of_day...Time.current.end_of_day)
