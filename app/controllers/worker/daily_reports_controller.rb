@@ -17,8 +17,6 @@ class Worker::DailyReportsController < ApplicationController
 
   def show
     @daily_report = DailyReport.find(params[:id])
-    # @daily_report.id = DailyReport.find_or_initialize_by
-    # @comment.build_daily_report
     @comments = @daily_report.comments
     @comment = @daily_report.comments.first
     @notification = false
@@ -26,12 +24,9 @@ class Worker::DailyReportsController < ApplicationController
       @notification = Notification.where(visited_id: current_worker.id).where(action_id: @comment.id).first
 
     end
-    # @comment.build_daily_report.comments.
-    # @daily_report.id = @comment.daily_report.id
     @timecards = current_worker.timecards
     total = []
     @daily_report.timecards.each do |card|
-    # @daily_report = card.daily_report
       if card.end_time == nil || card.start_time == nil
         next
       end

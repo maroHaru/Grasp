@@ -1,8 +1,6 @@
 class Worker::NotificationsController < ApplicationController
 
   def index
-    # @notifications = Notification.all
-    # @notifications = Notification.where(visited_id: current_worker.id).where(is_checked: false).order('id DESC').limit(3)
     @notifications = Notification.where(visited_id: current_worker.id).order('id DESC').limit(3)
   end
 

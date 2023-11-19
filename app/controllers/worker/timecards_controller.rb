@@ -6,14 +6,10 @@ class Worker::TimecardsController < ApplicationController
   end
 
   def create
-    # now = Time.current
     timecard = Timecard.new(timecard_params)
     today = Date.today
 
     @daily_report = current_worker.daily_reports.find_by(reported_date: today)
-    # if params[:daily_report] != nil && params[:daily_report][:today]
-    #   reported_date = params[:daily_report][:today]
-    # end
     if @daily_report.present?
       timecard.worker_id = current_worker.id
       timecard.start_time = Time.current
@@ -35,20 +31,13 @@ class Worker::TimecardsController < ApplicationController
   end
 
   def index
-    pp "current-----------------------------#{current_worker.id}"
+    # pp "current-----------------------------#{current_worker.id}"
     @to_do = ToDo.new
     @to_dos = current_worker.to_dos.where(is_completed: false)
-    # @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
-    # @daily_report = @timecards.daily_report
     @timecards = current_worker.timecards.where(start_time: Time.current.beginning_of_day...Time.current.end_of_day)
-    # @timecard_all = DailyReport.find(params[:daily_report][:daily_report_id])
-    # @daily_report = DailyReport.find(params[:id])
-    # @daily_report = DailyReport.find(params[:daily_report][:daily_report_id])
-    # @daily_report = DailyReport.find(params[:daily_report])
+
     today = Date.today
     @daily_report = current_worker.daily_reports.find_by(reported_date:  today)
-
-
     total = []
     @timecards.each do |card|
     @daily_report = card.daily_report
