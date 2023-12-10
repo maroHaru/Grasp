@@ -6,7 +6,12 @@
     <table>
       <thead>
         <tr>
-          <th height="50", class="h3">Client 追加</th>
+          <th height="50", class="h3">
+            <% if @client.errors.any? %>
+              <div class="alert alert-danger" role="alert">Client名を入力してください</div>
+            <% end %>
+            Client 追加
+          </th>
           <th></th>
           <th></th>
         </tr>

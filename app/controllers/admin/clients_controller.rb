@@ -7,8 +7,12 @@ class Admin::ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
-    @client.save
-    redirect_to admin_clients_path
+    if @client.save
+      redirect_to admin_clients_path
+    else
+      @clients = Client.page(params[:page]).per(10)
+      render :index
+    end
   end
 
   def edit
