@@ -7,7 +7,12 @@
       <table>
         <thead>
           <tr>
-            <th height="60", class="h4">業務内容 追加</th>
+            <th height="60", class="h4">
+              <% if @job.errors.any? %>
+                <div class="alert alert-danger" role="alert">業務内容を入力してください</div>
+              <% end %>
+              業務内容 追加
+            </th>
             <th></th>
             <th></th>
           </tr>

@@ -4,8 +4,12 @@ class Worker::JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.worker_id = current_worker.id
-    @job.save
-    redirect_to jobs_path
+    if @job.save
+      redirect_to jobs_path
+    else
+      @jobs = current_worker.jobs
+      render :index
+    end
   end
 
   def index
