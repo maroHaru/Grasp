@@ -1,4 +1,5 @@
 class Admin::ClientsController < ApplicationController
+  before_action :authenticate_admin!, if: :admin_url
 
   def index
     @clients = Client.page(params[:page]).per(10)
@@ -29,5 +30,9 @@ class Admin::ClientsController < ApplicationController
 
   def client_params
     params.require(:client).permit(:name)
+  end
+
+  def admin_url
+    request.fullpath.include?("/admin")
   end
 end

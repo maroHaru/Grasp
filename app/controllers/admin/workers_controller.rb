@@ -1,4 +1,5 @@
 class Admin::WorkersController < ApplicationController
+  before_action :authenticate_admin!, if: :admin_url
 
   def index
     @workers = Worker.all
@@ -13,6 +14,12 @@ class Admin::WorkersController < ApplicationController
     @worker = Worker.find(params[:id])
     @timecards = @worker.timecards
     @daily_report = @worker.daily_reports
-
   end
+
+  private
+
+  def admin_url
+    request.fullpath.include?("/admin")
+  end
+
 end

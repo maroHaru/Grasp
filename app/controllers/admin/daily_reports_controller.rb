@@ -1,4 +1,5 @@
 class Admin::DailyReportsController < ApplicationController
+  before_action :authenticate_admin!, if: :admin_url
 
   def show
     @daily_report = DailyReport.find(params[:id])
@@ -14,5 +15,11 @@ class Admin::DailyReportsController < ApplicationController
       total << diff
     end
       @total = Time.at(total.sum).utc.strftime('%R')
+  end
+
+  private
+
+  def admin_url
+    request.fullpath.include?("/admin")
   end
 end
