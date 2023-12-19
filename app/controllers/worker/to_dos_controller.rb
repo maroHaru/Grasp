@@ -6,10 +6,14 @@ class Worker::ToDosController < ApplicationController
   end
 
   def create
-    to_do = ToDo.new(to_do_params)
-    to_do.worker_id = current_worker.id
-    to_do.save
-    redirect_to timecards_path
+    @to_do = ToDo.new(to_do_params)
+    @to_do.worker_id = current_worker.id
+    if @to_do.save
+      redirect_to timecards_path
+    else
+      @complete_to_dos = current_worker.to_dos.where(is_completed: true).order('id DESC')
+      render :index
+    end
   end
 
   def update

@@ -7,6 +7,9 @@
 　　<div class="col-md-5 text-left">
 　　  <h3>ToDo</h3>
       <%= form_with model: @to_do do |f| %>
+        <% if @to_do.errors.any? %>
+          <div class="alert alert-danger" role="alert">ToDo内容を入力してください</div>
+        <% end %>
         <%= f.text_field :name, size: 45 %>
         <%= f.submit '追加', class: "btn btn-sm btn-info" %>
       <% end %>
